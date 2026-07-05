@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.png" alt="SeismicPhaseStatistics Logo" width="400"/>
+  <img src="logo.png" alt="SeismicPhaseStatistics Logo" width="800"/>
 </div>
 
 Code and data accompanying publications on Data-Driven Seismic Phase Analysis using Circular Statistics.
