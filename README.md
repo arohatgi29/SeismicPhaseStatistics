@@ -11,7 +11,7 @@ Each subdirectory corresponds to a published or submitted paper and is self-cont
 Instantaneous phase, by construction, is only defined modulo $2\pi$: the arctangent used to compute it from a complex (analytic) signal always returns a value in $(-\pi, \pi]$. As phase accumulates over time, it "wraps" around this interval every time it crosses a $\pm\pi$ boundary, producing the sawtooth pattern below. The true, continuously accumulating phase (unwrapped) is recovered by adding or subtracting multiples of $2\pi$ at each discontinuity so the sequence increases smoothly.
 
 <div align="center">
-  <img src="assets/phase_wrap_unwrap.png" alt="Phase wrapping and unwrapping illustration" width="700"/>
+  <img src="assets/Phase_wrap_unwrap.jpg" alt="Phase wrapping and unwrapping illustration" width="700"/>
   <p><em>Figure 3 from Rohatgi et al., 2025, <a href="https://doi.org/10.1190/tle44090683.1">The Leading Edge</a>.</em></p>
 </div>
 
