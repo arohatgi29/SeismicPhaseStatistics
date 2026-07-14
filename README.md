@@ -30,7 +30,7 @@ $$\frac{1° + 359°}{2} = 180°$$
 The circular mean avoids this entirely by working directly on the circle rather than the number line, correctly landing near $0°$:
 
 <div align="center">
-  <img src="assets/linear_circular_mean.png" alt="Comparison of linear mean vs. circular mean for phase angles 1°, 0°, and 359°" width="800"/>
+  <img src="linear_circular_mea.jpg" alt="Comparison of linear mean vs. circular mean for phase angles 1°, 0°, and 359°" width="800"/>
 </div>
 
 **Variance is similarly distorted.** A cluster of phase values scattered near the $\pm\pi$ wrap boundary (e.g., some measured as $+178°$, others as $-178°$ due to noise pushing them across the boundary) will show enormous linear variance, even though physically these values are tightly clustered and differ by only a few degrees. This is a pure artifact of where the arbitrary $(-\pi, \pi]$ cut point happens to fall — it carries no physical meaning, yet it can dominate a linear statistic and masquerade as high phase scatter or low data quality.
