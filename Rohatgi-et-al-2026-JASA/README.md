@@ -1,11 +1,13 @@
 # Amplitude-Invariant Phase Masking for Coherence Recovery in Scattered Wavefields
 
-[![Code](https://img.shields.io/badge/Code-PDF-green)](code.pdf)
-[![Pluto](https://img.shields.io/badge/Pluto-Notebook-blue?logo=julia&logoColor=white)](notebook.jl)
+[![DOI](https://img.shields.io/badge/DOI-10.1121%2F10.0044229-1a365d)](https://doi.org/10.1121/10.0044229)
+[![Code](https://img.shields.io/badge/Code-PDF-2ea44f)](code.pdf)
+[![Pluto](https://img.shields.io/badge/Pluto-Notebook-4063D8?logo=julia&logoColor=white)](notebook.jl)
 [![Language](https://img.shields.io/badge/Julia-9558B2?logo=julia&logoColor=white)](https://julialang.org/)
 
-**Akshika Rohatgi¹, Andrey Bakulin¹, and Sergey Fomel¹ (2026)**  
-*Submitted to Journal of the Acoustical Society of America*
+
+**Rohatgi, A., Bakulin, A., and Fomel, S. (2026)**
+*JASA Express Letters*, 6, 074801.
 
 ¹ Bureau of Economic Geology, University of Texas at Austin, Austin, Texas 78758, United States
 
