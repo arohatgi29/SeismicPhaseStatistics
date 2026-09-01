@@ -63,7 +63,7 @@ Pkg.add("Pluto")
 
 ```bash
 # Clone the repository
-git clone https://github.com/TCCS-CODES/Rohatgi-etal-phase-variance-qc.git
+git clone https://github.com/arohatgi29/SeismicPhaseStatistics/Rohatgi-etal-2026-Sensors.git
 cd Rohatgi-etal-phase-variance-qc.git
 ```
 
@@ -76,23 +76,6 @@ Pluto.run(notebook="notebook.jl")
 
 This will open the Pluto notebook in your browser. Any dependencies used in the notebook will be installed automatically by Pluto's built-in package manager.
 
----
-
-## Citation
-
-If you use this work, please cite:
-
-```bibtex
-@article{rohatgi2025phasevariance,
-  title   = {Phase variance as a seismic quality-control attribute},
-  author  = {Rohatgi, A. and Bakulin, A. and Fomel, S.},
-  journal = {Geophysics},
-  year    = {2025},
-  note    = {Submitted},
-  url     = {https://arxiv.org/abs/2602.23585}
-}
-```
----
 
 ## License
 
