@@ -1245,48 +1245,10 @@ md"""
 This trend is consistent with stack-based signal-to-noise ratio estimates (Figure 7a), computed following Bakulin et al. (2022b). Prestack SNR improves from roughly ``-22`` dB to ``-12`` dB after processing, reflecting substantial suppression of random noise. However, SNR averages energy over the full frequency band and therefore masks important broadband behavior. In contrast, circular variance isolates phase variability directly and reveals that improvements are confined to a limited frequency range.
 """
 
-# ╔═╡ c2450094-75fe-4cc8-9a3c-028e30ec2f36
+# ╔═╡ a541f546-04be-4f53-9b50-16a6e1ce6acf
 begin
-    # ── raw stats 
-    mean_var_near_raw  = round(mean(vec(variance_raw[5, 1:2000])),    digits=2)
-    mean_var_far_raw   = round(mean(vec(variance_raw[5, 6000:8000])), digits=2)
-
-    p6i = histogram(vec(variance_raw[5, 1:3000]),
-                    label="Near offsets", title="V̄ = $mean_var_near_raw",
-                    fill="#FF0000", bins=10, grid=false, normalize=true,
-                    legend=:topleft,
-                    xtickfontsize=10, ytickfontsize=10)
-    xlims!(p6i, 0.0, 1.0); ylims!(p6i, 0, 48)
-
-    p6j = histogram(vec(variance_raw[5, 6000:8000]),
-                    label="Far offsets", title="V̄ = $mean_var_far_raw",
-                    fill="#4EA72E", bins=10, grid=false, normalize=true,
-                    xtickfontsize=10, ytickfontsize=10)
-    xlims!(p6j, 0.0, 1.0); ylims!(p6j, 0, 48)
-
-    # ── processed stats 
-    mean_var_near_processed = round(mean(vec(variance_processed[5, 1:3000])),    digits=2)
-    mean_var_far_processed  = round(mean(vec(variance_processed[5, 6000:8000])), digits=2)
-
-    p6k = histogram(vec(variance_processed[5, 1:3000]),
-                    label="Near offsets", title="V̄ = $mean_var_near_processed",
-                    fill="#FF0000", bins=10, grid=false, normalize=true,
-                    legend=:topleft,
-                    xtickfontsize=10, ytickfontsize=10)
-    xlims!(p6k, 0.0, 1.0); ylims!(p6k, 0, 52)
-
-    p6l = histogram(vec(variance_processed[5, 6000:8000]),
-                    label="Far offsets", title="V̄ = $mean_var_far_processed",
-                    fill="#4EA72E", bins=10, grid=false, normalize=true,
-                    xtickfontsize=10, ytickfontsize=10)
-    xlims!(p6l, 0.0, 1.0); ylims!(p6l, 0, 52)
-
-    plot(p6i, p6j, p6k, p6l,
-         layout=(1, 4),
-         size=(1400, 350),
-         left_margin=6Plots.mm,
-         bottom_margin=6Plots.mm,
-         dpi=300)
+	plot(variance_raw[5,:], linecolr=:black, lw=3, label=false, color=:black)
+	plot!(variance_processed[5,:], grid=false, size=(1000,300),linecolor=:black, linestyle=:dash, lw=3, label=false)
 end
 
 # ╔═╡ bb960156-be5a-4a0e-b43a-c66b541c8850
@@ -1551,6 +1513,27 @@ begin
           lw=3, color="#499af2", grid=false)
 
     p_appendix
+end
+
+# ╔═╡ 6c58f65e-57fb-4f8c-83f0-848b6843056a
+# RMS error between estimated and true phase variance, per window size
+rmse(est, truth) = sqrt(mean((est .- truth).^2))
+
+
+# ╔═╡ 08b22bc0-8407-4b8f-963b-b67d8b69e35b
+rmse_1000 = rmse(variance_out_1000, var_imposed)
+
+# ╔═╡ 401500f5-97bf-4497-a397-73d8be83f4cc
+rmse_10   = rmse(variance_out_10,   var_imposed)
+
+# ╔═╡ 554485a4-0590-4ce4-9570-a599527fcb60
+rmse_100  = rmse(variance_out_100,  var_imposed)
+
+# ╔═╡ 40d096e1-6555-4db0-b0b7-9184bc2f4620
+begin
+	println("RMSE (N=10):   ", rmse_10)
+println("RMSE (N=100):  ", rmse_100)
+println("RMSE (N=1000): ", rmse_1000)
 end
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -3174,7 +3157,7 @@ version = "1.13.0+0"
 # ╟─b23715bb-fe6a-419e-8015-012109e8774c
 # ╠═e72b071e-be58-45a0-8c5d-53250d577d23
 # ╟─a9b554b5-4fe6-455f-aa9a-fb001827619e
-# ╠═c2450094-75fe-4cc8-9a3c-028e30ec2f36
+# ╠═a541f546-04be-4f53-9b50-16a6e1ce6acf
 # ╟─bb960156-be5a-4a0e-b43a-c66b541c8850
 # ╠═bae896e2-30e7-4580-a360-f275aaa22b5c
 # ╠═b70ac738-fa0b-4606-8070-d86666cd66f8
@@ -3193,5 +3176,10 @@ version = "1.13.0+0"
 # ╟─f85c0466-490c-4f2a-b189-277c74657dfa
 # ╟─de8a7d62-7429-47c4-8bb0-94ba01803536
 # ╠═82900dcf-62a0-41b6-8b47-33d5dab19744
+# ╠═6c58f65e-57fb-4f8c-83f0-848b6843056a
+# ╠═08b22bc0-8407-4b8f-963b-b67d8b69e35b
+# ╠═401500f5-97bf-4497-a397-73d8be83f4cc
+# ╠═554485a4-0590-4ce4-9570-a599527fcb60
+# ╠═40d096e1-6555-4db0-b0b7-9184bc2f4620
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
